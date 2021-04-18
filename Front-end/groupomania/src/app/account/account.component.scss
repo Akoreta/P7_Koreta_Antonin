@@ -1,0 +1,45 @@
+#titleAccount {
+  font-size: 2rem;
+  background-color: #2F4858;
+}
+
+#containerProfil {
+  margin-top: 5%;
+
+  ul {
+    .infoProfilList {
+      font-size: 1.3rem;
+      margin-top: 8%;
+    }
+
+    .listForm {
+      margin-top: 10%;
+
+      form {
+        margin-top: 5%;
+        text-align: center;
+
+      }
+    }
+  }
+
+
+}
+
+.infoProfil {
+  font-style: italic;
+
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+
+#confirmBtnDelete {
+  margin-top: 5%;
+}
+
+.firstLetterUppercase:first-letter {
+  text-transform: uppercase;
+}

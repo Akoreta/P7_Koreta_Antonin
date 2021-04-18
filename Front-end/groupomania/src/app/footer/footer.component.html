@@ -1,0 +1,30 @@
+<footer class="">
+  <div class="footerContainer">
+    <div class="footerLogo">
+      <p>
+        <a href="#">
+          <fa-icon [icon]="faFacebook"></fa-icon>
+        </a>
+        <a href="#">
+          <fa-icon [icon]="faInstagram"></fa-icon>
+        </a>
+        <a href="#">
+          <fa-icon [icon]="faTwitter"></fa-icon>
+        </a>
+        <a href="#">
+          <fa-icon [icon]="faBuilding"></fa-icon>
+        </a>
+      </p>
+    </div>
+
+    <div class="footerLink">
+      <p>
+        <a *ngIf="isAuth" routerLink="post">Accueil &nbsp; | &nbsp; </a>
+        <a *ngIf="isAuth" routerLink="account">Mon compte &nbsp; | &nbsp; </a>
+        <a *ngIf="!isAuth" routerLink="login">Se connecter &nbsp;| &nbsp; </a>
+        <a (click)="logout()" *ngIf="isAuth" id="logout">Se déconnecter </a>
+        <a *ngIf="!isAuth" routerLink="register">S'inscrire </a>
+      </p>
+    </div>
+  </div>
+</footer>

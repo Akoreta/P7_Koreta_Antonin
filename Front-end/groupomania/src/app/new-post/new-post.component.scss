@@ -1,0 +1,37 @@
+#containerNews {
+
+  padding-top: 2%;
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #F5F5F7;
+
+  img {
+    margin-top: 2%;
+  }
+}
+
+#containerNewPost {
+  margin-top: 2%;
+
+  h1 {
+    font-size: 2rem;
+    white-space: nowrap;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  #containerNews {
+    flex-direction: column;
+    background-color: white;
+  }
+  img {
+    display: none;
+  }
+  h1 {
+
+  }
+
+}
+

@@ -1,0 +1,85 @@
+<div [ngClass]="{'d-none': this.isDelete}" id="containerOnePost">
+
+  <div [ngClass]="{'bg-danger' : isAdmin}" class="col-12 text-light" id="containerAuthorTitle">
+    <h3 id="authorPost"><a [routerLink]="['/post/byPseudo/'] + postAuthor">@{{postAuthor}}</a></h3>
+    <h3 class="" id="titlePost">{{postTitle}}</h3>
+    <p id="titleDate"> {{datePost}}</p>
+  </div>
+  <div class="container font-weight-bold familyOpenSans col-12" id="containerDescription">
+    <img class=" img-fluid" id="imgPost" src={{postUrlImg}}>
+    <p class="  " id="descriptionPost ">{{descriptionPost}}</p>
+  </div>
+
+  <div class="col-12" id="likeContainer">
+    <p class="" id="countLike"><span>{{countLike}}</span> &nbsp;
+      <button (click)="likePost(id)" [ngClass]='{animLike : hasLikeBis === true , dislikeAnim: hasLikeBis === false}'
+              class=""
+              id="likeBtn">
+        <fa-icon [icon]="faThumbsUp"></fa-icon>
+      </button>
+    </p>
+    <p class="d-none">{{id}}</p>
+
+
+    <div *ngIf="isAdmin || isAutor" id="btnDropDown" class="dropdown" dropdown>
+      <p class="btn bg-groupo" dropdownToggle>
+        <fa-icon class="text-light" [icon]="faEllipsisH"></fa-icon>
+      </p>
+      <ul class="dropdown-menu text-left" id="dropDownMenu" *dropdownMenu>
+        <li>
+          <button *ngIf="isAutor" [routerLink]="['modify/'] + id"><span class="color-groupo">Modifier &nbsp; &nbsp; &nbsp;</span>
+            &nbsp;<fa-icon class="color-groupo" [icon]="faEdit"></fa-icon>
+          </button>
+        </li>
+        <li>
+          <button (click)="deletePost(id)" *ngIf="isAdmin || isAutor"><span
+            class="text-danger">Supprimer &nbsp; &nbsp; </span>
+            <fa-icon class="color-groupo" [icon]="faTrashAlt"></fa-icon>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+<form id="newCommentForm" *ngIf="commentForm" [formGroup]="commentForm" (ngSubmit)="onSubmitForm()" >
+
+  <div class="form-group" id="containerForm">
+    <textarea class="form-control" formControlName="comment_text" name="description"
+              placeholder="Ajouter un commentaire..."
+              rows="2"></textarea>
+    <button id="btnSubmitFormComment" type="submit" [disabled]="commentForm.invalid" class="btn">Publier</button>
+    <button  type="button" *ngIf="comment?.length >0 " id="btnCommentView" (click)="disableViewComment()"> <fa-icon *ngIf="!seeComment" [icon]="faArrowDown"></fa-icon> <fa-icon *ngIf="seeComment" [icon]="faArrowTop"></fa-icon> <span id="countComment"> &nbsp; {{comment?.length}} commentaires </span>  </button>
+  </div>
+</form>
+
+  <!--
+    <div *ngFor="let comments of comment let i = index" >
+      <p> {{comments.comment_text}} </p> from <p> {{comments.pseudo}}</p> <p> {{comments.date_comment}}</p>
+      <p> {{comments.comment_id}}</p>
+    </div>
+  -->
+  <div *ngIf="seeComment">
+    <div class="col-12" *ngFor="let comments of comment let i = index">
+      <hr>
+      <div class="containerComment col-12">
+
+        <img [routerLink]="['/post/byPseudo/'] + postAuthor"  src="assets/profil.png" style="max-height: 60px;display:block; margin-right: 2%">
+        <div id="containerAuthorComment">
+          <p id="authorComment" [routerLink]="['/post/byPseudo/'] + postAuthor"  class="text-uppercase">{{comments?.pseudo}} </p>
+          <p id="textComment">{{comments?.comment_text}}</p>
+          <p  id="deleteCommentaire" *ngIf="comments.canDelete" (click)="deleteComment(comments.comment_id)" class="text-danger">Retirer </p>
+          <div id="dateContainer">        <p id="dateComment">{{comments?.date_comment}}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+<hr *ngIf="!isDelete" >
+
+

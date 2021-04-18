@@ -1,0 +1,32 @@
+<div class="container-fluid d-flex flex-column" id="containerNews">
+
+  <div class="col-md-6 col-12 align-self-center" id="containerPostList">
+    <div>
+      <div *ngIf="loading" class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" style="height: 5rem ; width: 5rem">
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngFor="let posts of post let index = index" class="">
+
+      <div id="containerOnePost">
+
+        <div class="col-12 bg-dark text-light" id="containerAuthorTitle">
+          <h3 id="authorPost"> @{{post[index].auteur_post}}</h3>
+          <h3 class="" id="titlePost">{{post[index].title_post}}</h3>
+          <p id="titleDate"> {{post[index].date_post}}</p>
+        </div>
+        <div class=" container   col-12  " id="containerDescription">
+          <img class=" img-fluid" id="imgPost" src="{{post[index].image_url_post}}">
+          <p class="  " id="descriptionPost ">{{post[index].description_post}}</p>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+</div>
+
+

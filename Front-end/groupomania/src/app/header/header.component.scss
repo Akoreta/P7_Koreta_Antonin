@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+ul {
+  margin-right: 5%;
+
+  li {
+    white-space: nowrap;
+    margin: 2%;
+
+    .linkHeader {
+      color: white;
+      font-size: 1rem;
+      font-family: 'Hind', sans-serif;
+    }
+
+    .linkBlack {
+      color:#2F4858;
+      background-color: #F5F5F7;
+      font-size: 1rem;
+      font-family: 'Hind', sans-serif;
+      display: inline-block;
+      border-radius: 4%;
+    }
+
+    @media screen and (max-width: 987px) {
+      .linkRed {
+        padding: 1%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 993px) {
+  ul {
+    li {
+      a, .classPubli {
+        font-size: 1.4rem;
+        padding-left: 0;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        box-shadow: none;
+
+      }
+    }
+  }
+}
+
+nav {
+  box-shadow: 0px 1px 2px 1px gray;
+}
+
+#collapseBtn {
+  color: white;
+}

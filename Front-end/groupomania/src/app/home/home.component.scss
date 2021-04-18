@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+.bgHome {
+}
+
+.colorHome {
+  color: black;
+}
+
+#containerHome{
+  display: flex;
+  flex-direction: column;
+
+}
+
+#containerLoginRegister{
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+  @media screen and(max-width: 900px) {
+    flex-direction: column;
+    text-align: center;
+  }
+  a{
+    margin: 2%;
+    font-size: 1.6rem;
+    padding: 0.5%;
+    background-color: #2F4858;
+    color: white;
+    text-decoration: none;
+    border-radius: 5%;
+    box-shadow: 1px 1px 5px 1px #2F4858;
+
+  }
+}
+
+#homeTitle {
+  display: flex;
+  margin-top: 12%;
+  justify-content: center;
+
+
+  h1 {
+    padding: 1.5%;
+    font-size: 3.2rem;
+    background-color: #2F4858;
+    color: #F5F5F7;
+    box-shadow: 1px 1px 5px 1px #2F4858;
+    border-radius: 3%;
+    span {
+font-size: 4rem;
+      color: #FD2D01;
+    }
+  }
+
+  #listHome {
+    margin-bottom: 8%;
+
+    li {
+      fa-icon {
+        font-size: 1.6rem;
+      }
+
+      list-style-type: none;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #2F4858;
+    }
+  }
+
+
+}
+
+
+#titleNewPost {
+  font-style: italic;
+}
+
+.btnHome {
+  margin-right: 20%;
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 1.3rem;
+
+  border: #2F4858 3px solid;
+  padding: 2%;
+  text-decoration: none;
+}
+
+.registerBtn {
+  color: #2F4858;
+}
+
+.loginBtn {
+  color: white;
+  background-color: #2F4858;
+}
+
+
+#childTitleHome {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+}
+
+
+#containerTitleHome {
+  display: flex;
+  align-items: center;
+  min-height: 30vh;
+
+  img {
+    padding-top: 1%;
+  }
+}
+
+
+@media screen and (max-width: 740px) {
+  #imgHome, .responsiveClass {
+    display: none;
+  }
+
+}

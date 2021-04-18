@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+header {
+  background-color: #2F4858;
+}
+
+.bgHome {
+
+  background-image: url('../../src/assets/desktop.jpg');
+  background-size: cover;
+background-repeat: no-repeat;
+}
+
+
+

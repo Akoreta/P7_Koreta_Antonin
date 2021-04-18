@@ -1,0 +1,11 @@
+<header>
+  <app-header *ngIf="!router.url.includes('home')"></app-header>
+</header>
+<main [ngClass]="{'bgHome' : router.url.includes('home')}">
+  <router-outlet></router-outlet>
+</main>
+
+
+<app-footer *ngIf="!router.url.includes('home')"></app-footer>
+
+

@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+.familyOpenSans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#containerOnePost {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-bottom: gray solid 2px;
+  padding-bottom: 3%;
+
+}
+
+
+.bg-groupo {
+  background-color: #2F4858;
+}
+
+.color-groupo {
+  color: #2F4858;
+}
+
+#titlePost:first-letter {
+  text-transform: uppercase
+}
+
+#titlePost {
+  font-size: 1.3rem;
+}
+
+#containerDescription {
+  margin-top: 2%;
+  margin-bottom: 1%;
+
+  p {
+    word-wrap: break-word;
+    font-size: 1rem;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  img {
+    padding: 3%;
+    float: left;
+    max-height: 20rem;
+    border-radius: 15%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #containerDescription {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #containerAuthorTitle {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  #dateComment {
+    position: initial;
+  }
+  #containerAuthorComment {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  #containerAuthorTitle {
+    background-color: white !important;
+
+    h3 {
+      color: black;
+      white-space: nowrap;
+    }
+  }
+
+}
+
+#containerAuthorTitle {
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 5%;
+  border-radius: 1%;
+  background-color: #2F4858;
+}
+
+#authorPost {
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+
+#likeContainer {
+  display: flex;
+  position: relative;
+
+  padding-top: 1%;
+
+
+  #btnDropDown {
+    position: absolute;
+    right: 2%;
+    bottom: 7%;
+    background-color: white;
+    font-size: 1.7rem;
+  }
+
+  @media screen and(max-width: 745px) {
+
+  }
+}
+
+
+#likeBtn {
+
+  text-decoration: none;
+  border: none;
+  background-color: white;
+}
+
+#titleDate {
+  text-decoration: underline;
+}
+
+#titleDate:first-letter {
+  text-transform: capitalize;
+}
+
+.animLike {
+  animation: scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.dislikeAnim {
+  animation: scale-down-center 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+
+@keyframes scale-up-center {
+  0% {
+    transform: scale(0.9);
+    opacity: 30%;
+  }
+  100% {
+    color: black;
+    transform: scale(1.1);
+    opacity: 100%;
+  }
+}
+
+@keyframes scale-down-center {
+  0% {
+    transform: scale(1.1);
+    opacity: 100%;
+
+  }
+  100% {
+    transform: scale(0.9);
+    color: gray;
+    opacity: 100%;
+  }
+}
+
+#countLike {
+
+  span {
+    font-size: 1.4rem;
+
+  }
+
+  button {
+    font-size: 1.4rem;
+    opacity: 0.8;
+  }
+}
+
+button {
+  text-decoration: none;
+  border: none;
+  background-color: white;
+}
+
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+@keyframes scale-out-center {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 1;
+  }
+}
+
+.deleteAnim {
+  animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+#dropDownMenu {
+  span {
+    font-size: 1.2rem;
+    color: #2F4858;
+  }
+
+  fa-icon {
+    font-size: 1.2rem;
+  }
+}
+
+.containerComment {
+
+  position: relative;
+  display: flex;
+
+  img {
+    cursor: pointer;
+  }
+
+  #containerAuthorComment {
+    margin-left: 1%;
+
+  }
+
+  #dateComment {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  #deleteCommentaire {
+    font-size: 0.9rem;
+  }
+
+  #textComment {
+    font-size: 0.9rem;
+    color: #2F4858;
+  }
+
+  #authorComment {
+    color: #2F4858;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 1000px) {
+    #dateContainer {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 0%;
+      top: 0%;
+    }
+
+  }
+}
+
+#newCommentForm {
+  position: relative;
+  padding-bottom: 5%;
+  margin: 1% 2%;
+}
+
+#btnSubmitFormComment {
+  position: absolute;
+  right: 1%;
+  top: 70%;
+  font-size: 1rem;
+  background-color: #2F4858;
+  color: white;
+
+}
+
+#btnCommentView {
+  position: absolute;
+  top: 70%;
+  background-color: #2F4858;
+  border-radius: 6px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 1%;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+@media screen and(max-width: 500px) {
+  #containerForm {
+    display: flex;
+    flex-direction: column;
+  }
+  #btnCommentView {
+    position: initial;
+    margin-bottom: 5%;
+  }
+}
+
+#deleteCommentaire {
+  cursor: pointer;
+}

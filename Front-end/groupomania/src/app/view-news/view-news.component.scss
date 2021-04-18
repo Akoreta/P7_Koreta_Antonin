@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+.familyOpenSans{
+  font-family: 'Open Sans', sans-serif;
+}
+#containerPostList{
+  background-color: #F5F5F7;
+  padding-top: 3%;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+#containerNews {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.1% 0 1%;
+  background-color: #2F4858;
+
+
+  h3{
+    font-family: Hind , sans-serif;
+font-size: 1.6rem;
+   margin-bottom: 2%;
+    color: #2F4858;
+    span{
+      font-style: italic;
+      font-size: 2rem;
+      color: #FD2D01;
+    }
+  }
+
+  #listHome{
+    margin-bottom: 8%;
+    li{
+      fa-icon{
+        font-size: 1.6rem;
+      }
+      list-style-type: none;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #2F4858;
+    }
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 8%;
+    color: #2F4858;
+
+
+
+    span {
+      color: #FD2D01;
+      font-style: italic;
+      font-weight: bold;
+      font-size: 3.5rem;
+      text-transform: capitalize;
+    }
+
+  }
+
+  @media screen and (max-width: 1000px) {
+    h2 {
+      margin-top: 12%;
+      margin-bottom: 22%;
+    }
+  }
+
+}
+
+
+#titleNewPost {
+  font-style: italic;
+}
+
+#newPostBtn {
+  display: inline-block;
+white-space: nowrap;
+  font-size: 1.5rem;
+  color: #2F4858;
+  border: #2F4858 3px solid;
+  padding: 2%;
+  text-decoration: none;
+
+}
+
+
+
+#childTitleHome{
+  display: flex;
+  flex-direction: column;
+}
+
+#titleWelcomeHome{
+  padding-bottom: 2%;
+}
+
+
+#containerTitleHome {
+  display: flex;
+  align-items: center;
+  min-height: 30vh;
+  margin-bottom: 5%;
+  padding-bottom:6%;
+  background-color: #F5F5F7;
+
+
+  img {
+
+  }
+}
+.animAppear {
+  animation: fade-in 1.5s , cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width:740px)  {
+  #imgHome{
+    display: none;
+  }
+}
+
+

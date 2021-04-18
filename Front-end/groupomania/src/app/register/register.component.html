@@ -1,0 +1,59 @@
+<div class="container familyOpenSans font-weight-bold" id="blockRegister">
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card-header text-center text-light" id="titleRegister">Rejoignez notre réseau social
+          interne
+        </div>
+        <div class="card-body">
+
+          <form (ngSubmit)="onSubmitForm()" [formGroup]="userForm" class="form-horizontal">
+
+
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="email"> Email</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-envelope fa"></i></span>
+                  <input class="form-control" formControlName="email" id="email" name="email"
+                         placeholder="Votre email professionnelle"
+                         type="text"/>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="pseudo">Pseudo</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-users fa"></i></span>
+                  <input class="form-control" formControlName="pseudo" id="pseudo" name="pseudo"
+                         placeholder="Choisissez un pseudo"
+                         type="text"/>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="password">Mot de passe </label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-lock fa-lg"></i></span>
+                  <input class="form-control" formControlName="password" id="password" name="password"
+                         placeholder="Votre mot de passe"
+                         type="password"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group ">
+              <button [disabled]="userForm.invalid" class="btn btn-dark btn-lg btn-block login-button" type="submit">
+                S'inscrire
+              </button>
+            </div>
+            <p *ngIf="errMessage" class="text-center text-danger"> {{errMessage}}</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
