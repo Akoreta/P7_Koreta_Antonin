@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
       })
       .catch((err) => {
         if (err.status === 400){
-          this.errMessage = 'Votre mot de passe doit contenir au minimum 5 caractères, à savoir : au moins une lettre minuscule et une lettre majuscule et  un chiffre';
+          this.errMessage = 'Votre mot de passe doit contenir au minimum 5 caractères, à savoir : au moins une lettre majuscule , une lettre minuscule et au moins un chiffre';
         }
         else if (err.status === 401){
           this.errMessage = 'Email ou pseudo déjà existant';

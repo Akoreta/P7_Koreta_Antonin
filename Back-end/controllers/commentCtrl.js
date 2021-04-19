@@ -1,15 +1,24 @@
 const Comment = require('../models/commentsMdl');
+const commentReg = new RegExp(/\b(ALTER|CREATE|DELETE|DROP|EXEC(UTE){0,1}|INSERT( +INTO){0,1}|MERGE|SELECT|UPDATE|UNION( +ALL){0,1})\b/g);
 
 exports.newComments = (req,res,next) => {
-    const date = new Date(Date.now());
-    Comment.Comment.create({
-    pseudo:req.body.pseudo,
-    post_id:req.params.id,
-        date_comment:date,
-    comment_text:req.body.comment_text
-})
-    .then(() => res.status(200).json('Post comment!'))
-    .catch(err => res.status(400).json(err));
+    if(commentReg.test(req.body.comment_text) === false && commentReg.test(req.body.pseudo) === false){
+        const date = new Date(Date.now());
+        Comment.Comment.create({
+            pseudo:req.body.pseudo,
+            post_id:req.params.id,
+            date_comment:date,
+            comment_text:req.body.comment_text
+        })
+            .then(() => res.status(200).json('Post comment!'))
+            .catch(err => res.status(400).json(err));
+    }
+
+    else {
+        console.log('Error')
+        return res.status(400).json('error')
+    }
+
 }
 
 exports.getComment = (req, res,next) => {

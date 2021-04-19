@@ -8,6 +8,6 @@ schema
     .has().lowercase()
     .has().digits(1) // Au moins 2 chiffres
     .has().not().spaces() // Pas d'espaces
-    .is().not().oneOf(['Passw0rd', 'Password123', 'password', 'Password12', 'motdepasse', 'Motdepasse', 'azertyui']); // Blacklist
+    .is().not().oneOf(['Passw0rd', 'Password123', 'password', 'Password12', 'motdepasse', 'Motdepasse', 'azertyui' , 'SELECT' , 'FROM' , 'SET'  , 'USE' , 'ALTER','CREATE','DELETE','DROP','EXEC']); // Blacklist
 
 module.exports = schema;

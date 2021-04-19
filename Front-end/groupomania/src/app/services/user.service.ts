@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {User} from "../models/user.model";
+import * as moment from 'moment';
 import {BehaviorSubject} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -10,8 +11,8 @@ import {Router} from "@angular/router";
 export class UserService {
   isAuthSubject = new BehaviorSubject<boolean>(false);
   private users: User[];
-  private token : string;
-  private userId: string;
+  private token: string;
+  private dateCreation: string;
   private ProfilUser: User;
 
 
@@ -21,6 +22,11 @@ export class UserService {
 
   getProfilUser() {
     return this.ProfilUser;
+    this.dateCreation = this.ProfilUser.dateCreation;
+  }
+
+  getDateCreationUser(){
+return  moment(this.dateCreation).locale('fr').format('L');
   }
 
   getUserAsync() {

@@ -11,22 +11,23 @@ exports.getAllUser = (req, res, next) => {
 }
 
 exports.register = (req, res, next) => {
-    if(schema.validate(req.body.password)){
+    if (schema.validate(req.body.password)) {
+        const date = new Date(Date.now());
         bcrypt.hash(req.body.password, 10)
             .then(hash => {
                 return User.User.create({
                     email: req.body.email,
                     pseudo: req.body.pseudo,
                     password: hash,
-                    isAdmin: 0
+                    isAdmin: 0,
+                    dateCreation: date
                 })
                     .then(() => res.status(201).json({message: 'User create!'}))
                     .catch(err => res.status(401).json('Pseudo et/ou email déjà existant'))
             })
             .catch(err => res.status(401).json({err}));
-    }
-    else {
-      return res.status(400).json()
+    } else {
+        return res.status(400).json()
     }
 
 }
@@ -52,6 +53,7 @@ exports.login = (req, res, next) => {
                             pseudo: user.pseudo,
                             email: user.email,
                             isAdmin: user.isAdmin,
+                            dateCreation:user.dateCreation,
                             token: jswt.sign({userId: user.id}, 'TOKEN_GROUPOMANIA', {expiresIn: '24h'})
                         })
                     }

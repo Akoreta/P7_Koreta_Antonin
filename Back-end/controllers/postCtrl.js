@@ -4,10 +4,11 @@ const likeCtrl = require('../controllers/likeCtrl');
 const moment = require('moment');
 const fs = require('fs');
 const urlGenerator = require("uuid");
+const postReg = new RegExp(/\b(ALTER|CREATE|DELETE|DROP|EXEC(UTE){0,1}|INSERT( +INTO){0,1}|MERGE|SELECT|UPDATE|UNION( +ALL){0,1})\b/g);
+
 
 
 exports.getAllPost = async (req, res, next) => {
-    console.log(req.headers);
     try {
         let post = [];
 
@@ -58,8 +59,9 @@ exports.getPostByPseudo = (req, res, next) => {
 
 
 exports.newPost = (req, res, next) => {
-    console.log(req.body)
     const post = JSON.parse(req.body.post);
+if(postReg.test(post.title_post) === false && postReg.test(post.description_post) === false && postReg.test(post.auteur_post) === false){
+
     let url = '';
     if (req.file) {
         url = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
@@ -85,12 +87,17 @@ exports.newPost = (req, res, next) => {
         .catch(err => res.status(400).json({message: err}))
 }
 
+else {
+    console.log('Error');
+   return  res.status(400).json('ERROR')
+}
+}
+
 exports.editPost = (req, res, next) => {
     const post = JSON.parse(req.body.post);
     const urlPost = urlGenerator.v4();
-    const newUrl = urlPost.replace(/-/g, '');
     const date = new Date(Date.now()).toISOString();
-
+if(postReg.test(post.title_post) === false && postReg.test(post.description_post) === false){
     Post.Post.findOne(
         {
             where:{
@@ -132,6 +139,13 @@ exports.editPost = (req, res, next) => {
     }  )
         .then(() => res.status(200).json({message:'Post update'}))
         .catch((err) => res.status(400).json(err));
+}
+
+else {
+    console.log('Error');
+    return res.status(400).json('error');
+}
+
 
 }
 

@@ -73,8 +73,8 @@ export class OnePostComponent implements OnInit {
 
 
   deletePost(id: string) {
-    this.postService.deletePost(id)
-    this.isDelete = true;
+    this.postService.deletePost(id).then(() => this.postService.getAllPost());
+
   }
 
   likePost(id: string) {
