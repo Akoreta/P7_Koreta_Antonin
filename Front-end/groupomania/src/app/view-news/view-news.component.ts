@@ -7,6 +7,7 @@ import {faEdit , faCheck} from "@fortawesome/free-solid-svg-icons";
 import Typewriter from 'typewriter-effect/dist/core';
 import {UserService} from "../services/user.service";
 import {User} from "../models/user.model";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-view-news',
@@ -24,12 +25,21 @@ export class ViewNewsComponent implements OnInit {
   loading: boolean;
   profilUser: User;
 
-  constructor(private postService: PostService, private router: Router, private userService: UserService) {
+  constructor(private postService: PostService, private router: Router, private userService: UserService , private http: HttpClient) {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('token')){
+      this.http.get('http://localhost:3000/user/getUserData').toPromise()
+        .then((response: User) => {
+this.profilUser = response;
+        })
+        .catch((err) => console.log(err));
+    }
+    else{
+      this.profilUser = this.userService.getProfilUser();
+    }
     this.loading = true;
-    this.profilUser = this.userService.getProfilUser();
     this.postSubscription = this.postService.postSubject.subscribe(
       (result) => {
         this.post = result;
@@ -37,11 +47,11 @@ export class ViewNewsComponent implements OnInit {
     )
     this.loadingSubscription = this.postService.loadingSubject.subscribe(
       (result) => {
-        this.loading = result
+        this.loading = result;
       }
     )
     this.postService.getAllPost();
-    const target = document.querySelector('.pseudoHome');
+    /*const target = document.querySelector('.pseudoHome');
     const typewriter = new Typewriter(target, {
       loop: false,
       delay: 80,
@@ -50,7 +60,7 @@ export class ViewNewsComponent implements OnInit {
 
     typewriter
       .typeString(this.profilUser.pseudo)
-      .start()
+      .start()*/
   }
 
 

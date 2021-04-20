@@ -3,14 +3,14 @@
   <img class="col-6" height="100%" src="assets/bannerImg.jpg">
 
 
-  <div class="container col-md-5 col-10" id="containerNewPost">
+  <div class="container col-md-5 col-10 familyOpenSans" id="containerNewPost">
     <div class="row shadow">
 
       <div class="col-md-8  col-md-offset-2">
 
-        <h1 class="text-center">Quoi de neuf {{profilUser.pseudo}} ?</h1>
+        <h1 class="text-center">Quoi de neuf <span class="font-weight-bold">{{profilUser?.pseudo}}</span>  ?</h1>
 
-        <form (ngSubmit)="onSubmitForm()" [formGroup]="postForm">
+        <form *ngIf="postForm" (ngSubmit)="onSubmitForm()" [formGroup]="postForm">
 
 
           <div class="form-group">

@@ -19,14 +19,18 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.profilUser = this.userService.getProfilUser();
-   this.profilUser.dateCreation =  this.userService.getDateCreationUser();
-    this.initForm();
+   this.userService.getUserAsync()
+     .then((response: User) => {
+       this.profilUser = response;
+       this.profilUser.dateCreation =  this.userService.getDateCreationUser();
+       this.initForm();
+     })
+
   }
 
   initForm() {
     this.deleteForm = this.formBuilder.group({
-      user_id: [this.profilUser.userId, [Validators.required, Validators.minLength(1)]],
+      user_id: [this.profilUser.user_id, [Validators.required, Validators.minLength(1)]],
       password: ['', [Validators.required, Validators.minLength(3)]],
       pseudo: [this.profilUser.pseudo]
     });

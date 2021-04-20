@@ -25,31 +25,46 @@ export class UserService {
     this.dateCreation = this.ProfilUser.dateCreation;
   }
 
-  getDateCreationUser(){
-return  moment(this.dateCreation).locale('fr').format('L');
+  getDateCreationUser() {
+    return moment(this.dateCreation).locale('fr').format('L');
   }
 
   getUserAsync() {
-    return new Promise((resolve => {
-      const result = this.ProfilUser;
-      resolve(result);
-    }))
+    return new Promise((resolve, reject) => {
+      if (localStorage.getItem('token')) {
+        this.http.get('http://localhost:3000/user/getUserData').toPromise()
+          .then((response: User) => {
+            this.ProfilUser = response;
+            resolve(this.ProfilUser);
+          })
+          .catch((err) => reject(err));
+      } else {
+        const result = this.ProfilUser;
+        resolve(result);
+      }
+
+    });
+
   }
 
   getToken() {
-return this.token;
+    return this.token;
   }
 
   logout() {
-    this.ProfilUser.userId = null;
+    this.ProfilUser.user_id = null;
     this.ProfilUser.token = null;
     this.ProfilUser.email = null;
     this.ProfilUser.pseudo = null;
     this.isAuthSubject.next(false);
+    localStorage.clear();
     this.router.navigate(['login']);
   }
 
-  newUser(postObject: User) {
+  newUser(postObject
+            :
+            User
+  ) {
     return new Promise(((resolve, reject) => {
       const httpOptions = {
         headers: new HttpHeaders({
@@ -62,13 +77,19 @@ return this.token;
           resolve(result);
         })
         .catch(err => {
-         reject(err)
+          reject(err)
         })
     }))
   }
 
 
-  loginUser(postObject: { password: string; pseudo: string }) {
+  loginUser(postObject
+              :
+              {
+                password: string;
+                pseudo: string
+              }
+  ) {
     return new Promise(((resolve, reject) => {
       const httpOptions = {
         headers: new HttpHeaders({
@@ -80,6 +101,7 @@ return this.token;
         .then((result: User) => {
           this.ProfilUser = result;
           this.token = result.token;
+          localStorage.setItem('token', result.token);
           this.isAuthSubject.next(true);
           resolve(result);
         })
@@ -106,6 +128,10 @@ return this.token;
         .catch((err) => reject(err));
     }))
 
+  }
+
+  getTokenLocal() {
+    return localStorage.getItem('token');
   }
 
 

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {faAlignJustify, faPlusCircle, faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {UserService} from "../services/user.service";
 import {Subscription} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-header',
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit {
   faUser = faUserCircle;
   faToggle = faAlignJustify;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService , private http:HttpClient) {
   }
 
   ngOnInit(): void {
@@ -27,6 +28,11 @@ export class HeaderComponent implements OnInit {
         this.isAuth = auth;
       }
     );
+    if(localStorage.getItem('token')){
+      this.http.get('http://localhost:3000/user/getUserData').toPromise()
+        .then(() => this.isAuth = true)
+        .catch(() => this.isAuth = false)
+    }
   }
 
   logout() {

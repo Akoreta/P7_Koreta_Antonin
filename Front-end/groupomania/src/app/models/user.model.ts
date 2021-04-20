@@ -1,6 +1,6 @@
 export class User {
   constructor(
-    public userId: number,
+    public user_id: number,
     public token: string,
     public isAdmin: boolean,
     public email: string,

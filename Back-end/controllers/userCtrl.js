@@ -3,6 +3,7 @@ const Post = require('../models/postMdl');
 const bcrypt = require('bcrypt');
 const jswt = require('jsonwebtoken');
 const schema = require('../models/password');
+const auth = require('../middleware/auth');
 
 exports.getAllUser = (req, res, next) => {
     User.User.findAll()
@@ -54,7 +55,7 @@ exports.login = (req, res, next) => {
                             email: user.email,
                             isAdmin: user.isAdmin,
                             dateCreation:user.dateCreation,
-                            token: jswt.sign({userId: user.id}, 'TOKEN_GROUPOMANIA', {expiresIn: '24h'})
+                            token: jswt.sign({userId: user.user_id}, 'TOKEN_GROUPOMANIA', {expiresIn: '24h'})
                         })
                     }
                 })
@@ -96,5 +97,18 @@ exports.destroyAccount = (req, res, next) => {
                 .catch((err) => res.status(400).json(err))
         })
         .catch((err) => res.status(400).json(err));
+}
+
+exports.getUserData = (req,res,next) => {
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jswt.verify(token, 'TOKEN_GROUPOMANIA');
+    const userId = decodedToken.userId;
+    User.User.findOne({
+        where:{
+            user_id:userId
+        }
+    })
+        .then((response)=> res.status(200).json(response))
+        .catch((err) => res.status(401).json(err))
 }
 

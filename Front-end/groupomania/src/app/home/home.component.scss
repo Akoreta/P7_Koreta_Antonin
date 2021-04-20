@@ -26,13 +26,11 @@
     }
     transition: 0.3s;
     margin: 2%;
-    font-size: 1.5rem;
-
+    font-size: 1.7rem;
     padding: 0.5%;
     color: #2F4858;
-    background-color: #F5F5F7;
-    text-decoration: none;
-
+    font-style: italic;
+text-decoration: none;
 
   }
 }
@@ -41,7 +39,7 @@
   display: flex;
   margin-top: 8%;
   justify-content: center;
-  background-color: #F5F5F7;
+  background-color: #99BDD7;
 
   h1 {
     font-family: 'Open Sans', sans-serif;
@@ -50,6 +48,7 @@
     color: #2F4858;
     #groupoTitle {
 font-size: 4rem;
+
       color: #FD2D01;
     }
   }
@@ -88,14 +87,7 @@ font-size: 4rem;
   text-decoration: none;
 }
 
-.registerBtn {
-  color: #2F4858;
-}
 
-.loginBtn {
-  color: white;
-  background-color: #2F4858;
-}
 
 
 #childTitleHome {

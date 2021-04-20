@@ -26,8 +26,11 @@ export class NewPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initForm();
-    this.profilUser = this.userService.getProfilUser();
+    this.userService.getUserAsync()
+      .then((response: User) => {
+        this.profilUser = response;
+        this.initForm();
+      } );
   }
 
   initForm() {

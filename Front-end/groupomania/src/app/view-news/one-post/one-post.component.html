@@ -48,7 +48,7 @@
               placeholder="Ajouter un commentaire..."
               rows="2"></textarea>
     <button id="btnSubmitFormComment" type="submit" [disabled]="commentForm.invalid" class="btn">Publier</button>
-    <button  type="button" *ngIf="comment?.length >0 " id="btnCommentView" (click)="disableViewComment()"> <fa-icon *ngIf="!seeComment" [icon]="faArrowDown"></fa-icon> <fa-icon *ngIf="seeComment" [icon]="faArrowTop"></fa-icon> <span id="countComment"> &nbsp; {{comment?.length}} commentaires </span>  </button>
+    <button  type="button" *ngIf="comment?.length >0 " id="btnCommentView" (click)="disableViewComment()"> <fa-icon *ngIf="!seeComment" [icon]="faArrowDown"></fa-icon> <fa-icon *ngIf="seeComment" [icon]="faArrowTop"></fa-icon> <span id="countComment"> &nbsp; {{comment?.length}} commentaire(s) </span>  </button>
   </div>
 </form>
 
