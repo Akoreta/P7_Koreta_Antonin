@@ -10,7 +10,7 @@ exports.newComments = (req,res,next) => {
             date_comment:date,
             comment_text:req.body.comment_text
         })
-            .then(() => res.status(200).json('Post comment!'))
+            .then(() => res.status(200).json('Post comment'))
             .catch(err => res.status(400).json(err));
     }
 

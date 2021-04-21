@@ -1,18 +1,10 @@
 <div class="container-fluid" id="containerNews">
-
   <img class="col-6" height="100%" src="assets/bannerImg.jpg">
-
-
   <div class="container col-md-5 col-10 familyOpenSans" id="containerNewPost">
     <div class="row shadow">
-
-      <div class="col-md-8  col-md-offset-2">
-
-        <h1 class="text-center">Quoi de neuf <span class="font-weight-bold">{{profilUser?.pseudo}}</span>  ?</h1>
-
+      <div class="col-md-10  col-md-offset-2" id="boxFormNewPosst">
+        <h1 class="text-center">Quoi de neuf <span class="font-weight-bold">{{profilUser?.pseudo}}</span> ?</h1>
         <form *ngIf="postForm" (ngSubmit)="onSubmitForm()" [formGroup]="postForm">
-
-
           <div class="form-group">
             <label>Titre</label>
             <input class="form-control" formControlName="title_post" name="title" placeholder="Ajoutez un titre"
@@ -38,13 +30,9 @@
               Post
             </button>
             <p> {{errMessage}}</p>
-
           </div>
-
         </form>
       </div>
-
     </div>
   </div>
-
 </div>

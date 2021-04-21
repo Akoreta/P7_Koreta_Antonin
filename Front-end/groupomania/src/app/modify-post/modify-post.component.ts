@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Post} from "../models/post.model";
-import {PostService} from "../services/post.service";
-import {Subscription} from "rxjs";
-import {User} from "../models/user.model";
-import {UserService} from "../services/user.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Post} from '../models/post.model';
+import {PostService} from '../services/post.service';
+import {Subscription} from 'rxjs';
+import {User} from '../models/user.model';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-modify-post',
@@ -20,19 +20,21 @@ export class ModifyPostComponent implements OnInit {
   postForm: FormGroup;
   imagePreview: string;
 
-
-  constructor(private postService: PostService, private route: ActivatedRoute, private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
-  }
+  constructor(private postService: PostService,
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private userService: UserService,
+              private router: Router) {}
 
   ngOnInit(): void {
-    this.userService.getUserAsync().then((result: User) => this.profilUser = result)
+    this.userService.getUserAsync().then((result: User) => this.profilUser = result);
     this.id = this.route.snapshot.paramMap.get('id');
     this.postSubscription = this.postService.postByIdSubject.subscribe(
       (result: Post) => {
-        this.post = result
+        this.post = result;
         this.initForm();
       }
-    )
+    );
     this.postService.getPostById(this.id);
   }
 
@@ -44,7 +46,7 @@ export class ModifyPostComponent implements OnInit {
         description_post: [this.post.description_post, [Validators.required, Validators.minLength(2)]],
         image_url_post: ['']
       }
-    )
+    );
   }
 
   onSubmitForm() {
@@ -53,8 +55,9 @@ export class ModifyPostComponent implements OnInit {
       title_post: this.postForm.value.title_post,
       description_post: this.postForm.value.description_post
     };
-
-    this.postService.modifyPost(this.id, newPost, this.postForm.value.image_url_post).then(() => this.postService.getAllPost().then(() => this.router.navigate(['post'])))
+    this.postService.modifyPost(this.id, newPost, this.postForm.value.image_url_post)
+      .then(() => this.postService.getAllPost().then(() => this.router.navigate(['post'])))
+      .catch((err) => console.log(err));
   }
 
   onFileAdded(event: Event) {
@@ -67,6 +70,5 @@ export class ModifyPostComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
-
 
 }

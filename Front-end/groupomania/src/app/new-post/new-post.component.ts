@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Post} from "../models/post.model";
-import {PostService} from "../services/post.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
-import {UserService} from "../services/user.service";
-import {User} from "../models/user.model";
-import {Subscription} from "rxjs";
+import {Post} from '../models/post.model';
+import {PostService} from '../services/post.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {UserService} from '../services/user.service';
+import {User} from '../models/user.model';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-new-post',
@@ -20,10 +20,10 @@ export class NewPostComponent implements OnInit {
   imagePreview: string;
   profilUser: User;
   newPostMode: string;
-  newPostModeSubscription: Subscription;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private postService: PostService, private userService: UserService) {
-  }
+  constructor(private formBuilder: FormBuilder,
+              private http: HttpClient, private router: Router,
+              private postService: PostService, private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.getUserAsync()
@@ -46,7 +46,7 @@ export class NewPostComponent implements OnInit {
     newPost.auteur_post = this.profilUser.pseudo;
     newPost.title_post = this.postForm.value.title_post;
     newPost.description_post = this.postForm.value.description_post;
-    this.postService.createPost(newPost, this.postForm.value.image_url_post).then(() => this.router.navigate(['post']))
+    this.postService.createPost(newPost, this.postForm.value.image_url_post).then(() => this.router.navigate(['post']));
   }
 
 

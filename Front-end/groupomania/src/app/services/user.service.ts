@@ -1,32 +1,28 @@
 import {Injectable} from '@angular/core';
-import {User} from "../models/user.model";
+import {User} from '../models/user.model';
 import * as moment from 'moment';
-import {BehaviorSubject} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {BehaviorSubject} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   isAuthSubject = new BehaviorSubject<boolean>(false);
-  private users: User[];
   private token: string;
-  private dateCreation: string;
   private ProfilUser: User;
 
-
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
-
 
   getProfilUser() {
     return this.ProfilUser;
-    this.dateCreation = this.ProfilUser.dateCreation;
   }
 
   getDateCreationUser() {
-    return moment(this.dateCreation).locale('fr').format('L');
+    return moment(this.ProfilUser.dateCreation).locale('fr').format('L');
   }
 
   getUserAsync() {
@@ -42,9 +38,7 @@ export class UserService {
         const result = this.ProfilUser;
         resolve(result);
       }
-
     });
-
   }
 
   getToken() {
@@ -61,10 +55,7 @@ export class UserService {
     this.router.navigate(['login']);
   }
 
-  newUser(postObject
-            :
-            User
-  ) {
+  newUser(postObject: User) {
     return new Promise(((resolve, reject) => {
       const httpOptions = {
         headers: new HttpHeaders({
@@ -72,24 +63,18 @@ export class UserService {
         })
       };
 
-      this.http.post("http://localhost:3000/user/register", postObject, httpOptions).toPromise()
+      this.http.post('http://localhost:3000/user/register', postObject, httpOptions).toPromise()
         .then((result) => {
           resolve(result);
         })
         .catch(err => {
-          reject(err)
-        })
-    }))
+          reject(err);
+        });
+    }));
   }
 
 
-  loginUser(postObject
-              :
-              {
-                password: string;
-                pseudo: string
-              }
-  ) {
+  loginUser(postObject: { password: string; pseudo: string }) {
     return new Promise(((resolve, reject) => {
       const httpOptions = {
         headers: new HttpHeaders({
@@ -107,12 +92,12 @@ export class UserService {
         })
         .catch((err) => {
           if (err.status === 401) {
-            err = 'Connexion refusée'
+            err = 'Connexion refusée';
           }
           reject(err);
-        })
+        });
 
-    }))
+    }));
   }
 
 
@@ -126,13 +111,10 @@ export class UserService {
       this.http.post('http://localhost:3000/user/', postObject, httpOptions).toPromise()
         .then((result) => resolve(result))
         .catch((err) => reject(err));
-    }))
-
+    }));
   }
 
   getTokenLocal() {
     return localStorage.getItem('token');
   }
-
-
 }

@@ -2,14 +2,14 @@
   <div class="row justify-content-center">
     <div class="col-md-7">
       <div class="card d-flex flex-column">
-        <div class="  card-header text-center firstLetterUppercase text-light"
-             id="titleAccount">{{profilUser.pseudo}}</div>
+        <div class="  card-header text-center firstLetterUppercase" id="titleAccount">{{profilUser.pseudo}}</div>
         <div class="card-body d-flex">
           <img class="img-fluid col-6" src="assets/profil.png">
           <ul class="list-unstyled">
-            <li class="infoProfilList"> Email :&nbsp;<span class="infoProfil underline">{{profilUser.email}} </span>
+            <li class="infoProfilList"> Email :&nbsp;<span class="infoProfil  underline">{{profilUser.email}} </span>
             </li>
-            <li class="infoProfilList">Inscrit le :&nbsp;<span class="infoProfil">{{profilUser.dateCreation}}</span></li>
+            <li class="infoProfilList">Inscrit le :&nbsp;<span class="infoProfil">{{profilUser.dateCreation}}</span>
+            </li>
             <li *ngIf="profilUser.isAdmin" class="infoProfilList"> Rôle : Administrateur</li>
             <li class="listForm d-flex flex-column">
               <button (click)="onDeleteBtn()" *ngIf="!deleteAccount" class="deleteProfilBtn btn btn-danger">
@@ -19,7 +19,9 @@
 
                 <input class="form-control" formControlName="password" name="password" placeholder="Votre mot de passe"
                        type="password">
-                <button class="btn-danger btn" id="confirmBtnDelete" type="submit">Supprimer définitivement</button>
+                <button class="btn-danger btn" id="confirmBtnDelete" type="submit" [disabled]="deleteForm.invalid">
+                  Supprimer définitivement
+                </button>
                 <p class="text-danger" id="errMsg">{{errMsg}}</p>
 
               </form>

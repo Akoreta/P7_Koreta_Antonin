@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {faBuilding} from "@fortawesome/free-solid-svg-icons";
-import {faFacebook, faInstagram, faTwitter,} from "@fortawesome/free-brands-svg-icons";
-import {Subscription} from "rxjs";
-import {UserService} from "../services/user.service";
+import {faBuilding} from '@fortawesome/free-solid-svg-icons';
+import {faFacebook, faInstagram, faTwitter, } from '@fortawesome/free-brands-svg-icons';
+import {Subscription} from 'rxjs';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-footer',
@@ -25,11 +25,10 @@ export class FooterComponent implements OnInit {
       (auth) => {
         this.isAuth = auth;
       }
-    )
+    );
   }
 
   logout() {
     this.userService.logout();
   }
-
 }

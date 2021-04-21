@@ -1,48 +1,40 @@
 <div class="container-fluid d-flex flex-column" id="containerNews">
   <div class="col-md-12" id="containerTitleHome">
-    <img class="col-6 img-fluid"  src="assets/socialMedia.png" id="imgHome">
+    <img class="col-6 img-fluid" src="assets/socialMedia.png" id="imgHome">
     <div id="childTitleHome" class="familyOpenSans">
-      <h2 id="titleWelcomeHome" class="font-weight-bold">  Bienvenue  {{profilUser?.pseudo}} <span class="pseudoHome"></span>
+      <h2 id="titleWelcomeHome" class="font-weight-bold"> Bienvenue <span class="pseudoHome"></span>
       </h2>
-      <h3  class="responsiveClass">Un réseau social pour votre entreprise <span>Groupomania</span></h3>
+      <h3 class="responsiveClass">Un réseau social pour votre entreprise <span>Groupomania</span></h3>
       <ul id="listHome" class="responsiveClass">
-        <li> <fa-icon [icon]="faCheck"></fa-icon> &nbsp; Interactions <span class="font-weight-bold">sociales</span>  </li>
-        <li> <fa-icon [icon]="faCheck"></fa-icon> &nbsp;  Inscription  <span class="font-weight-bold">sécurisée</span>  et <span class="font-weight-bold">rapide</span></li>
-        <li>  <fa-icon [icon]="faCheck"></fa-icon> &nbsp;<span class="font-weight-bold">Aimez</span>  et <span class="font-weight-bold">commentez </span>  les nouvelles de vos collègues</li>
+        <li>
+          <fa-icon [icon]="faCheck"></fa-icon> &nbsp; Interactions <span class="font-weight-bold">sociales</span></li>
+        <li>
+          <fa-icon [icon]="faCheck"></fa-icon> &nbsp; Inscription <span class="font-weight-bold">sécurisée</span> et
+          <span class="font-weight-bold">rapide</span></li>
+        <li>
+          <fa-icon [icon]="faCheck"></fa-icon> &nbsp;<span class="font-weight-bold">Aimez</span> et <span
+          class="font-weight-bold">commentez </span> les nouvelles de vos collègues
+        </li>
       </ul>
-
       <div>
         <a routerLink="new" id="newPostBtn" class="font-weight-bold">Nouvelle publication </a>
       </div>
-
-
     </div>
-
-
   </div>
-
   <div class="col-md-7 col-12 align-self-center" id="containerPostList">
-
-
     <div>
       <div *ngIf="loading" class="d-flex justify-content-center">
         <div class="spinner-border" role="status" style="height: 5rem ; width: 5rem">
         </div>
       </div>
     </div>
-
-
-    <div  *ngFor="let posts of post let index = index" class="animAppear">
-
-
-      <app-one-post  [countLike]="post[index].countLike" [datePost]="post[index].date_post"
+    <div *ngFor="let posts of post let index = index" class="animAppear">
+      <app-one-post [countLike]="post[index].countLike" [datePost]="post[index].date_post"
                     [descriptionPost]="post[index].description_post" [id]="post[index].post_id"
                     [postAuthor]="post[index].auteur_post" [postTitle]="post[index].title_post"
                     [postUrlImg]="post[index].image_url_post"></app-one-post>
     </div>
-
   </div>
-
 </div>
 
 

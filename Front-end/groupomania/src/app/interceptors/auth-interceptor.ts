@@ -1,13 +1,11 @@
 import {HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {UserService} from "../services/user.service";
+import {UserService} from '../services/user.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private userService: UserService) {
-  }
-
-
+  constructor(private userService: UserService) {}
+  // TOKEN => REQ.HEADERS  \\
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const token = this.userService.getToken();
     if (token === undefined) {
@@ -22,6 +20,5 @@ export class AuthInterceptor implements HttpInterceptor {
       });
       return next.handle(newRequest);
     }
-
   }
 }

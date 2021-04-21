@@ -19,8 +19,8 @@ const routes: Routes = [
   {path: 'post', component: ViewNewsComponent , canActivate:[AuthGuardService]},
   {path: 'post/byPseudo/:id', component: PostByPseudoComponent, canActivate: [AuthGuardService]},
   {path: 'account', component: AccountComponent, canActivate: [AuthGuardService]},
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: '**', redirectTo: 'login'}
+  {path: '', redirectTo: 'post', pathMatch: 'full'},
+  {path: '**', redirectTo: 'post'}
 ];
 
 @NgModule({

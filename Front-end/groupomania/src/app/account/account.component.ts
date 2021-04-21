@@ -15,7 +15,9 @@ export class AccountComponent implements OnInit {
   profilUser: User;
   errMsg: string;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -24,23 +26,20 @@ export class AccountComponent implements OnInit {
        this.profilUser = response;
        this.profilUser.dateCreation =  this.userService.getDateCreationUser();
        this.initForm();
-     })
-
+     });
   }
 
   initForm() {
     this.deleteForm = this.formBuilder.group({
       user_id: [this.profilUser.user_id, [Validators.required, Validators.minLength(1)]],
-      password: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
       pseudo: [this.profilUser.pseudo]
     });
   }
 
-
   onDeleteBtn() {
     this.deleteAccount = true;
   }
-
 
   onSubmitForm() {
     const formValue = this.deleteForm.value;
@@ -49,6 +48,9 @@ export class AccountComponent implements OnInit {
       .catch((err) => {
         if (err.status === 401) {
           this.errMsg = 'Mot de passe incorrect';
+        }
+        else {
+          this.errMsg = 'Impossible de supprimer le compte';
         }
       });
 

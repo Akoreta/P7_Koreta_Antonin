@@ -7,9 +7,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-constructor(public router: Router) {
-}
-  ngOnInit() {
-  }
+constructor(public router: Router) {}
+  ngOnInit() {}
 
 }

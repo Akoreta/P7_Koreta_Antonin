@@ -1,30 +1,28 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Subject} from "rxjs";
-import {Post} from "../models/post.model";
-import {Comment} from "../models/comment.model";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Subject} from 'rxjs';
+import {Post} from '../models/post.model';
+import {Comment} from '../models/comment.model';
 import * as moment from 'moment';
-import {Router} from "@angular/router";
-
-const date = moment();
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class PostService {
   post: Post[];
   comment: Comment[];
   postById: Post;
-  hasLikeSubject = new Subject<number>();
   postSubject = new Subject<Post[]>();
   postByPseudoSubject = new Subject<any>();
   postByIdSubject = new Subject<Post>();
   commentSubject = new Subject<Comment[]>();
   loadingSubject = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
-
 
   getAllPost() {
     return new Promise((resolve, reject) => {
@@ -32,20 +30,20 @@ export class PostService {
       this.http.get<Post[]>('http://localhost:3000/post/ ').subscribe(
         (response: Post[]) => {
           this.post = response;
-          for (let i = 0; i < this.post.length; i++) {
-            const datePost = this.post[i].date_post;
+          for (const item of this.post) {
+            const datePost = item.date_post;
             const date = moment(datePost).locale('fr').utc().calendar();
-            this.post[i].date_post = date;
-            if (this.post[i].image_url_post === null) {
-              this.post[i].image_url_post = 'http://localhost:3000/images/icon.png1617028749363.png'
+            item.date_post = date;
+            if (item.image_url_post === null) {
+              item.image_url_post = 'http://localhost:3000/images/icon.png1617028749363.png';
             }
           }
           this.postSubject.next(this.post);
-          this.loadingSubject.next(false)
-          resolve(response)
+          this.loadingSubject.next(false);
+          resolve(response);
         }
-      )
-    })
+      );
+    });
 
   }
 
@@ -54,17 +52,17 @@ export class PostService {
     this.http.get('http://localhost:3000/post/byPseudo/' + auteurId).subscribe(
       (response) => {
         post = response;
-        for (let i = 0; i < post.length; i++) {
-          let datePost = post[i].date_post;
-          let date = moment(datePost).locale("fr").utc().calendar();
-          post[i].date_post = date;
-          if (post[i].image_url_post === null) {
-            post[i].image_url_post = "http://localhost:3000/images/icon.png1617028749363.png"
+        for (const item of post) {
+          const datePost = item.date_post;
+          const date = moment(datePost).locale('fr').utc().calendar();
+          item.date_post = date;
+          if (item.image_url_post === null) {
+            item.image_url_post = 'http://localhost:3000/images/icon.png1617028749363.png';
           }
         }
-        this.postByPseudoSubject.next(post)
+        this.postByPseudoSubject.next(post);
       }
-    )
+    );
   }
 
   createPost(post: Post, image: File) {
@@ -74,11 +72,10 @@ export class PostService {
       formData.append('image', image);
       this.http.post('http://localhost:3000/post/new', formData).subscribe(
         (response: { message: string }) => {
-          resolve(response)
-          console.log('Post create')
+          resolve(response);
         },
         (error => {
-          reject(error)
+          reject(error);
         })
       );
     }));
@@ -92,26 +89,25 @@ export class PostService {
       formData.append('image', image);
       this.http.put('http://localhost:3000/post/' + id, formData).subscribe(
         (response: { message: string }) => {
-          resolve(response)
+          resolve(response);
         },
         (err) => {
-          reject(err)
+          reject(err);
         }
-      )
-    }))
+      );
+    }));
   }
 
   deletePost(id: string) {
     return new Promise(((resolve, reject) => {
       this.http.delete('http://localhost:3000/post/' + id).toPromise()
         .then((response) => {
-          resolve(response)
+          resolve(response);
         })
         .catch((err) => {
-          reject(err)
-        })
-    }))
-
+          reject(err);
+        });
+    }));
   }
 
   like(postId: string, like: number, userId) {
@@ -120,67 +116,58 @@ export class PostService {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
         })
-      }
+      };
       const likeObject = {
         user_id: userId,
-        like: like
-      }
+        like
+      };
       this.http.post('http://localhost:3000/like/' + postId, likeObject, httpOptions).toPromise()
         .then((result) => resolve(result))
-        .catch((err) => reject(err))
-    })
+        .catch((err) => reject(err));
+    });
   }
 
   getPostById(id: string) {
-
     this.http.get('http://localhost:3000/post/getOne/' + id).toPromise()
       .then((response: Post) => {
         this.postById = response;
-        this.postByIdSubject.next(this.postById)
+        this.postByIdSubject.next(this.postById);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   }
 
-
-  sendNewCommentaire(id: string, newComment) {
+  sendNewComment(id: string, newComment) {
     return new Promise(((resolve, reject) => {
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
         })
-      }
+      };
 
       this.http.post('http://localhost:3000/comment/new/' + id, newComment, httpOptions).toPromise()
         .then((result) => {
-          resolve(result)
+          resolve(result);
         })
         .catch((err) => reject(err));
-    }))
+    }));
   }
 
   deleteComment(id: string, value: number) {
     return new Promise(((resolve, reject) => {
       const deleteObject = {
         comment_id: value
-      }
+      };
 
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
         }),
         body: deleteObject
-      }
-
+      };
 
       this.http.delete('http://localhost:3000/comment/' + id, httpOptions).toPromise()
         .then((result) => resolve(result))
         .catch((err) => reject(err));
-    }))
+    }));
   }
-
-
 }
-
-/*  SELECT  `post`.* , (SELECT COUNT(*) FROM  `like_table` WHERE  `like_table`.`post_id` =  `post`.`post_id`) AS  'count_like'
-  FROM `post`
-  WHERE  `post`.`post_id` = 'c7c217bf6e8f48ddaa02f9da98f18689'*/

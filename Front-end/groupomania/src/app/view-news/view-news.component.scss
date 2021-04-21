@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-.familyOpenSans{
+
+.familyOpenSans {
   font-family: 'Open Sans', sans-serif;
 }
-#containerPostList{
+
+#containerPostList {
   background-color: #F5F5F7;
   padding-top: 3%;
   padding-left: 8%;
@@ -16,25 +18,26 @@
   padding: 0.1% 0 1%;
   background-color: #99BDD7;
 
-
-  h3{
-    font-family: Hind , sans-serif;
-font-size: 1.6rem;
-   margin-bottom: 2%;
+  h3 {
+    font-family: Hind, sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 2%;
     color: #2F4858;
-    span{
-      font-style: italic;
+
+    span {
       font-size: 2rem;
       color: #FD2D01;
     }
   }
 
-  #listHome{
+  #listHome {
     margin-bottom: 8%;
-    li{
-      fa-icon{
+
+    li {
+      fa-icon {
         font-size: 1.6rem;
       }
+
       list-style-type: none;
       font-size: 1.3rem;
       font-style: italic;
@@ -48,12 +51,10 @@ font-size: 1.6rem;
     color: #2F4858;
 
 
-
     span {
       color: #FD2D01;
-      font-style: italic;
       font-weight: bold;
-      font-size: 3.5rem;
+      font-size: 3rem;
       text-transform: capitalize;
     }
 
@@ -74,30 +75,28 @@ font-size: 1.6rem;
 }
 
 #newPostBtn {
-  &:hover{
+  &:hover {
     transform: scale(1.050);
     transition: 0.5s;
   }
+
   transition: 0.5s;
   display: inline-block;
-white-space: nowrap;
+  white-space: nowrap;
   font-size: 1.5rem;
   color: #2F4858;
-cursor: pointer;
+  cursor: pointer;
   border: #2F4858 3px solid;
   padding: 2%;
   text-decoration: none;
-
 }
 
-
-
-#childTitleHome{
+#childTitleHome {
   display: flex;
   flex-direction: column;
 }
 
-#titleWelcomeHome{
+#titleWelcomeHome {
   padding-bottom: 2%;
 }
 
@@ -107,16 +106,12 @@ cursor: pointer;
   align-items: center;
   min-height: 30vh;
   margin-bottom: 5%;
-  padding-bottom:6%;
+  padding-bottom: 6%;
   background-color: #F5F5F7;
-
-
-  img {
-
-  }
 }
+
 .animAppear {
-  animation: fade-in 1.5s , cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in 1.5s, cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 @keyframes fade-in {
@@ -128,8 +123,8 @@ cursor: pointer;
   }
 }
 
-@media screen and (max-width:740px)  {
-  #imgHome{
+@media screen and (max-width: 740px) {
+  #imgHome {
     display: none;
   }
 }

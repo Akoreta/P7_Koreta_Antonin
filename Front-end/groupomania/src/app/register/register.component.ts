@@ -15,8 +15,9 @@ export class RegisterComponent implements OnInit {
   userForm: FormGroup;
   errMessage: string;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
-  }
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -57,6 +58,4 @@ export class RegisterComponent implements OnInit {
         }
       });
   }
-
-
 }
