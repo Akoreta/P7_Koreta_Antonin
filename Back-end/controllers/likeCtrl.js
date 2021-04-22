@@ -1,9 +1,10 @@
 const Like = require('../models/likeMdl');
 const Post = require('../models/postMdl');
+
 exports.getLiketbl = (req, res, next) => {
     Like.Like.findAll()
         .then((like) => res.status(200).json(like))
-        .catch((err) => res.status(400).json({err}))
+        .catch((err) => res.status(400).json({err}));
 }
 
 exports.hasLike = (req, res, next) => {
@@ -14,7 +15,7 @@ exports.hasLike = (req, res, next) => {
         }
     })
         .then((like) => res.status(200).json(like))
-        .catch((err) => res.status(400).json({err}))
+        .catch((err) => res.status(400).json({err}));
 }
 
 exports.getLike = (id) => {
@@ -23,10 +24,8 @@ exports.getLike = (id) => {
             post_id: id
         }
     })
-        .then((result) => {
-            return result
-        })
-        .catch((err) => console.log(err))
+        .then((result) => result)
+        .catch((err) => console.log(err));
 }
 
 exports.like = (req, res, next) => {
@@ -40,9 +39,7 @@ exports.like = (req, res, next) => {
                 }
             )
                 .then(() => res.status(200).json({message: '+1 like'}))
-                .catch(err => res.status(400).json(err))
-
-                .catch(err => res.status(400).json(err))
+                .catch(err => res.status(400).json(err));
             break;
 
         case 0: {
@@ -53,10 +50,10 @@ exports.like = (req, res, next) => {
             )
                 .then(() => res.status(200).json({message: 'Like cancel'}))
                 .catch(err => res.status(400).json({err}));
-
             break;
         }
-
+        default:
+            res.status(400).json('error');
     }
 }
 

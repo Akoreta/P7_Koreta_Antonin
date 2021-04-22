@@ -8,16 +8,12 @@ const config = new Sequelize('Groupomania','GroupoAdmin','groupo',{
         idle: 10000
     },
     logging:false
-
 });
 
 config.authenticate()
     .then(() => console.log('Connecté à la base de donnée'))
-    .catch((err) => console.log('Impossible de se connecter' , err))
-// a.koreta6969@gmail.com
-// ID = l-895-maprm-69 \\
-// d1I0B4h0sPO9jnNg  \\
+    .catch((err) => console.log('Impossible de se connecter' , err));
+
 module.exports = {
     Sequelize, config
 }
-console.log('----------------------------------------------')

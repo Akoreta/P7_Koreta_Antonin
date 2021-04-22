@@ -15,8 +15,7 @@ exports.newComments = (req,res,next) => {
     }
 
     else {
-        console.log('Error')
-        return res.status(400).json('error')
+        return res.status(400).json('error');
     }
 
 }
@@ -28,7 +27,7 @@ exports.getComment = (req, res,next) => {
         },
         order: [['date_comment', 'DESC']]    })
         .then((result) => res.status(200).json(result))
-        .catch((err)=> res.status(400).json(err))
+        .catch((err)=> res.status(400).json(err));
 }
 
 exports.delete = (req,res,next) => {
@@ -39,7 +38,4 @@ exports.delete = (req,res,next) => {
     })
         .then(() => res.status(200).json('CommentModel delete!'))
         .catch((err)=> res.status(400).json(err));
-
-
-
 }

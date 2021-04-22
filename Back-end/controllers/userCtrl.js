@@ -8,7 +8,7 @@ const auth = require('../middleware/auth');
 exports.getAllUser = (req, res, next) => {
     User.User.findAll()
         .then((result) => res.status(200).json(result))
-        .catch((err) => res.status(400).json(err))
+        .catch((err) => res.status(400).json(err));
 }
 
 exports.register = (req, res, next) => {
@@ -24,15 +24,13 @@ exports.register = (req, res, next) => {
                     dateCreation: date
                 })
                     .then(() => res.status(201).json({message: 'User create!'}))
-                    .catch(err => res.status(401).json('Pseudo et/ou email déjà existant'))
+                    .catch(err => res.status(401).json(err));
             })
             .catch(err => res.status(401).json({err}));
     } else {
-        return res.status(400).json()
+        return res.status(400).json();
     }
-
 }
-
 
 exports.login = (req, res, next) => {
     User.User.findOne({
@@ -42,12 +40,12 @@ exports.login = (req, res, next) => {
     })
         .then((user) => {
             if (!user) {
-                return res.status(401).json({message: 'Invalid pseudo'})
+                return res.status(401).json({message: 'Invalid pseudo'});
             }
             bcrypt.compare(req.body.password, user.password)
                 .then(valid => {
                     if (!valid) {
-                        res.status(401).json({message: 'Invalid password'})
+                        res.status(401).json({message: 'Invalid password'});
                     } else {
                         return res.status(200).json({
                             userId: user.user_id,
@@ -59,9 +57,9 @@ exports.login = (req, res, next) => {
                         })
                     }
                 })
-                .catch((err) => res.status(400).json({err}))
+                .catch((err) => res.status(400).json({err}));
         })
-        .catch(err => res.status(400).json({err}))
+        .catch(err => res.status(400).json({err}));
 }
 
 exports.destroyAccount = (req, res, next) => {
@@ -74,7 +72,7 @@ exports.destroyAccount = (req, res, next) => {
             bcrypt.compare(req.body.password, user.password)
                 .then(valid => {
                     if (!valid) {
-                        res.status(401).json({message: 'Invalid password! Cant delete account'})
+                        res.status(401).json({message: 'Invalid password! Cant delete account'});
                     } else {
                         User.User.destroy({
                             where: {
@@ -88,13 +86,13 @@ exports.destroyAccount = (req, res, next) => {
                                     }
                                 })
                                     .then(() => res.status(200).json({message: 'Account and his post delete'}))
-                                    .catch((err) => res.status(400).json(err))
+                                    .catch((err) => res.status(400).json(err));
                             })
-                            .catch(err => res.status(400).json({err}))
+                            .catch(err => res.status(400).json({err}));
                     }
                 })
 
-                .catch((err) => res.status(400).json(err))
+                .catch((err) => res.status(400).json(err));
         })
         .catch((err) => res.status(400).json(err));
 }
@@ -109,6 +107,6 @@ exports.getUserData = (req,res,next) => {
         }
     })
         .then((response)=> res.status(200).json(response))
-        .catch((err) => res.status(401).json(err))
+        .catch((err) => res.status(401).json(err));
 }
 
