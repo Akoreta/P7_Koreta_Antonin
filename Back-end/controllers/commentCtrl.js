@@ -36,6 +36,6 @@ exports.delete = (req,res,next) => {
             comment_id: req.body.comment_id
         }
     })
-        .then(() => res.status(200).json('CommentModel delete!'))
+        .then(() => res.status(200).json('CommentModel delete'))
         .catch((err)=> res.status(400).json(err));
 }
