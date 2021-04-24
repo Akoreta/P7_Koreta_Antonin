@@ -5,6 +5,7 @@ const jswt = require('jsonwebtoken');
 const schema = require('../models/password');
 const auth = require('../middleware/auth');
 
+
 exports.getAllUser = (req, res, next) => {
     User.User.findAll()
         .then((result) => res.status(200).json(result))
