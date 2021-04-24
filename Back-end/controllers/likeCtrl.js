@@ -1,11 +1,6 @@
 const Like = require('../models/likeMdl');
 const Post = require('../models/postMdl');
 
-exports.getLiketbl = (req, res, next) => {
-    Like.Like.findAll()
-        .then((like) => res.status(200).json(like))
-        .catch((err) => res.status(400).json({err}));
-}
 
 exports.hasLike = (req, res, next) => {
     Like.Like.count({

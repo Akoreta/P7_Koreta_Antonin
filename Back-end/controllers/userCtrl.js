@@ -6,12 +6,6 @@ const schema = require('../models/password');
 const auth = require('../middleware/auth');
 
 
-exports.getAllUser = (req, res, next) => {
-    User.User.findAll()
-        .then((result) => res.status(200).json(result))
-        .catch((err) => res.status(400).json(err));
-}
-
 exports.register = (req, res, next) => {
     if (schema.validate(req.body.password)) {
         const date = new Date(Date.now());
