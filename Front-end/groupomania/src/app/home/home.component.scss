@@ -10,19 +10,16 @@
   display: flex;
   margin-top: 8%;
   justify-content: center;
-  margin-left: 15%;
-  margin-right: 15%;
-  border-bottom: 2px solid #2F4858;
-
   h1 {
     font-family: 'Open Sans', sans-serif;
     padding: 2%;
     font-size: 3rem;
     color: #2F4858;
-
+    background-color: #F5F5F7;
     #groupoTitle {
       font-size: 4rem;
       color: #FD2D01;
+      font-weight: bold;
     }
   }
 }
@@ -47,11 +44,11 @@
       transform: scale(1.1);
       transition: 0.5s;
     }
-
     transition: 0.3s;
     margin: 2%;
     font-size: 2rem;
     padding: 0.5%;
+
     color: #2F4858;
     text-decoration: none;
   }
