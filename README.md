@@ -2,4 +2,4 @@
 
 Back-end : Lancer node server 
 
-Front-end : Se placer dans le dossier groupomania et lancer npm install 
+Front-end : Se placer dans le dossier groupomania et lancer npm install puis ng serve
