@@ -15,12 +15,12 @@
 
         <div class="col-12 bg-dark text-light" id="containerAuthorTitle">
           <h3 id="authorPost"> @{{post[index].auteur_post}}</h3>
-          <h3 class="" id="titlePost">{{post[index].title_post}}</h3>
+          <h3  id="titlePost">{{post[index].title_post}}</h3>
           <p id="titleDate"> {{post[index].date_post}}</p>
         </div>
         <div class=" container   col-12  " id="containerDescription">
-          <img class=" img-fluid" id="imgPost" src="{{post[index].image_url_post}}">
-          <p class="  " id="descriptionPost ">{{post[index].description_post}}</p>
+          <img class=" img-fluid" id="imgPost" src="{{post[index].image_url_post}}" alt="picture post">
+          <p id="descriptionPost ">{{post[index].description_post}}</p>
         </div>
       </div>
       <hr>

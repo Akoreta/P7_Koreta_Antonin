@@ -1,9 +1,9 @@
 <div class="container-fluid" id="containerNews">
-  <img class="col-6" height="100%" src="assets/bannerImg.jpg">
+  <img class="col-6" height="100%" src="assets/bannerImg.jpg" alt="Picture banner">
   <div class="container col-md-5 col-10" id="containerNewPost">
     <div class="row shadow">
       <div class="col-md-8  col-md-offset-2">
-        <form (ngSubmit)="onSubmitForm()" *ngIf="postForm" [formGroup]="postForm">
+        <form (ngSubmit)="onSubmitForm()" *ngIf="postForm" [formGroup]="postForm" autocomplete="off">
 
           <div class="form-group">
             <label>Titre</label>
@@ -22,7 +22,7 @@
           <div class="form-group">
             <label class="">Image (facultatif)</label>
             <input (change)="onFileAdded($event)" class="form-control-file" id="fileImg" type="file">
-            <img *ngIf="imagePreview" [src]="imagePreview" style="max-height: 100px;display:block;margin-top:10px">
+            <img *ngIf="imagePreview" [src]="imagePreview" style="max-height: 100px;display:block;margin-top:10px" alt="picture preview">
 
 
           </div>
