@@ -4,7 +4,7 @@
     <div class="row shadow">
       <div class="col-md-10  col-md-offset-2" id="boxFormNewPosst">
         <h1 class="text-center">Quoi de neuf <span class="font-weight-bold">{{profilUser?.pseudo}}</span> ?</h1>
-        <form *ngIf="postForm" (ngSubmit)="onSubmitForm()" [formGroup]="postForm">
+        <form *ngIf="postForm" (ngSubmit)="onSubmitForm()" [formGroup]="postForm" autocomplete="off">
           <div class="form-group">
             <label>Titre</label>
             <input class="form-control" formControlName="title_post" name="title" placeholder="Ajoutez un titre"
