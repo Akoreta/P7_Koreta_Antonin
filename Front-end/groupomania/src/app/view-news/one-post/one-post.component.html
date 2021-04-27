@@ -59,10 +59,10 @@
     <div class="col-12" *ngFor="let comments of comment let i = index">
       <hr>
       <div class="containerComment col-12">
-        <img [routerLink]="['/post/byPseudo/'] + postAuthor" src="assets/profil.png" alt="picture profil default"
+        <img [routerLink]="['/post/byPseudo/'] + comments.pseudo" src="assets/profil.png" alt="picture profil default"
              style="max-height: 60px;display:block; margin-right: 2%">
         <div id="containerAuthorComment">
-          <p id="authorComment" [routerLink]="['/post/byPseudo/'] + postAuthor"
+          <p id="authorComment" [routerLink]="['/post/byPseudo/'] + comments.pseudo"
              class="text-uppercase">{{comments?.pseudo}} </p>
           <p id="textComment">{{comments?.comment_text}}</p>
           <p id="deleteCommentaire" *ngIf="comments.canDelete" (click)="deleteComment(comments.comment_id)"
