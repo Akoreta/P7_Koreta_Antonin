@@ -11,7 +11,7 @@ import {ModifyPostComponent} from './modify-post/modify-post.component';
 import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
-  {path: 'register', component: RegisterComponent, },
+  {path: 'register', component: RegisterComponent },
   {path: 'login', component: LoginComponent},
   {path: 'home' , component: HomeComponent},
   {path: 'post/new', component: NewPostComponent, canActivate: [AuthGuardService]},
