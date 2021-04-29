@@ -1,7 +1,9 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const Sequelize = require('sequelize');
-const config = new Sequelize('Groupomania','GroupoAdmin','groupo',{
-    dialect: 'mysql',
-    host:'34.65.201.106',
+const config = new Sequelize(process.env.DB_NAME,process.env.ADMIN,process.env.PASSWORD,{
+    dialect: process.env.DIALECT,
+    host: process.env.HOST,
     pool: {
         max: 5,
         min: 0,
