@@ -3,11 +3,12 @@ const Post = require('../models/postMdl');
 const bcrypt = require('bcrypt');
 const jswt = require('jsonwebtoken');
 const schema = require('../models/password');
+const emailValidator = require('email-validator');
 const auth = require('../middleware/auth');
 
 
 exports.register = (req, res, next) => {
-    if (schema.validate(req.body.password)) {
+    if (schema.validate(req.body.password) && emailValidator.validate(req.body.email)) {
         const date = new Date(Date.now());
         bcrypt.hash(req.body.password, 10)
             .then(hash => {
@@ -23,7 +24,7 @@ exports.register = (req, res, next) => {
             })
             .catch(err => res.status(401).json({err}));
     } else {
-        return res.status(400).json();
+        return res.status(400).json('Error password or email');
     }
 }
 
